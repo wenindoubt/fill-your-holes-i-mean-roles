@@ -1,0 +1,43 @@
+<div class="mat-display-2">Select Your Players: {{ this.maxNumOfPlayers }}</div>
+
+<mat-grid-list cols="5">
+  <mat-grid-tile *ngFor="let player of players">
+    <mat-card mat-ripple (click)="onSelect(player)">
+      <mat-card-header>
+        <mat-card-title>{{ player?.name }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="last-child">
+        <mat-list *ngFor="let position of player.positions">
+          <mat-list-item *ngIf="position == 'Top'">{{ position }} <img src="../../assets/positions/position-top.svg" alt="position-top"></mat-list-item>
+          <mat-list-item *ngIf="position == 'Jungle'">{{ position }} <img src="../../assets/positions/position-jungle.svg" alt="position-jungle"></mat-list-item>
+          <mat-list-item *ngIf="position == 'Middle'">{{ position }} <img src="../../assets/positions/position-middle.svg" alt="position-middle"></mat-list-item>
+          <mat-list-item *ngIf="position == 'Bottom'">{{ position }} <img src="../../assets/positions/position-bottom.svg" alt="position-bottom"></mat-list-item>
+          <mat-list-item *ngIf="position == 'Support'">{{ position }} <img src="../../assets/positions/position-utility.svg" alt="position-utility"></mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<mat-grid-list cols="5" *ngIf="selectedPlayers?.length == 5">
+  <mat-grid-tile colspan="2">
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1" rowspan="2">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Your Team</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item>Top: {{ this.numOfTopRoles }} <img src="../../assets/positions/position-top.svg" alt="position-top"></mat-list-item>
+          <mat-list-item>Jungle: {{ this.numOfJungleRoles }} <img src="../../assets/positions/position-jungle.svg" alt="position-jungle"></mat-list-item>
+          <mat-list-item>Middle: {{ this.numOfMiddleRoles }} <img src="../../assets/positions/position-middle.svg" alt="position-middle"></mat-list-item>
+          <mat-list-item>Bottom: {{ this.numOfBottomRoles }} <img src="../../assets/positions/position-bottom.svg" alt="position-bottom"></mat-list-item>
+          <mat-list-item>Support: {{ this.numOfSupportRoles }} <img src="../../assets/positions/position-utility.svg" alt="position-utility"></mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2">
+  </mat-grid-tile>
+</mat-grid-list>
